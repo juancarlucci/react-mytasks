@@ -1,7 +1,16 @@
-import React, {Component} from 'react';
-import TodoForm from './TodoForm';
-import {Button, Checkbox, Container, Grid, Column, List, Segment, Icon, Popup} from 'semantic-ui-react';
-
+import React, { Component } from "react";
+import TodoForm from "./TodoForm";
+import {
+  Button,
+  Checkbox,
+  Container,
+  Grid,
+  Column,
+  List,
+  Segment,
+  Icon,
+  Popup
+} from "semantic-ui-react";
 
 class Todo extends Component {
   constructor() {
@@ -11,7 +20,7 @@ class Todo extends Component {
     // this.handleEditingDone = this.handleEditingDone.bind(this);
     // this.markAsComplete = this.markAsComplete.bind(this);
 
-    this.state ={
+    this.state = {
       completed: false,
       editing: false
     };
@@ -22,8 +31,8 @@ class Todo extends Component {
   }
 
   editClickedTodo() {
-    this.setState({ editing: true})
-    this.props.onEditTodo(this.props.todo)
+    this.setState({ editing: true });
+    this.props.onEditTodo(this.props.todo);
   }
 
   // handleEditingDone(e) {
@@ -40,7 +49,7 @@ class Todo extends Component {
   //   });
   // }
 
-  render(){
+  render() {
     console.log(this.state.editing);
 
     var viewStyle = {};
@@ -54,37 +63,42 @@ class Todo extends Component {
 
     console.log(this.state.editing);
 
-    return(
-     <List.Item data-todos-index={this.props.todo.id}>
-
-       <List.Content
-         labelposition='left'>
-
-           {/*  <Checkbox className="check-mark" checked={this.props.todo.completed} onClick={this.markAsComplete}/>
+    return (
+      <List.Item data-todos-index={this.props.todo.id}>
+        <List.Content labelposition="left">
+          {/*  <Checkbox className="check-mark" checked={this.props.todo.completed} onClick={this.markAsComplete}/>
          */}
 
-         <Button className="btn btn-icon" circular icon='write' onClick={this.editClickedTodo}></Button>
+          <Button
+            className="btn btn-icon"
+            circular
+            icon="write"
+            onClick={this.editClickedTodo}
+          />
 
-          <Button className="btn btn-delete" circular onClick={this.deleteClickedTodo}>X</Button>
+          <Button
+            className="btn btn-delete"
+            circular
+            onClick={this.deleteClickedTodo}>
+            X
+          </Button>
 
-         <div className="todo-items-list">{this.props.todo.body}</div>
-
-
-
-
-      </List.Content>
-          { this.props.editingTodoId === this.props.todo._id ?
-             <TodoForm
-               autoFocus={true}
-               onKeyUp={this.handleEditingDone}
-               onUpdateTodo={this.props.onUpdateTodo}
-               todo={this.props.todo.body}
-               buttonName="Update Todo!"/> : '' }
-
+          <div className="todo-items-list">{this.props.todo.body}</div>
+        </List.Content>
+        {this.props.editingTodoId === this.props.todo._id ? (
+          <TodoForm
+            autoFocus={true}
+            onKeyUp={this.handleEditingDone}
+            onUpdateTodo={this.props.onUpdateTodo}
+            todo={this.props.todo.body}
+            buttonName="Update Todo!"
+          />
+        ) : (
+          ""
+        )}
       </List.Item>
-    )
+    );
   }
-
 }
 
-export default Todo
+export default Todo;

@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import {Button, Input, Popup, Icon } from 'semantic-ui-react';
-
+import React, { Component } from "react";
+import { Button, Input, Popup, Icon } from "semantic-ui-react";
 
 class TodoForm extends Component {
   constructor(props) {
@@ -8,41 +7,44 @@ class TodoForm extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      todo: ''
-    }
-
+      todo: ""
+    };
   }
   onChange(event) {
     this.setState({
-      todo: event.target.value,
-    })
+      todo: event.target.value
+    });
   }
-  onSubmit(event){
-    event.preventDefault()
-    var todo = this.state.todo
-    this.props.onUpdateTodo(todo)
+  onSubmit(event) {
+    event.preventDefault();
+    var todo = this.state.todo;
+    this.props.onUpdateTodo(todo);
     this.setState({
       todo: "",
-      editing: false,
-    })
+      editing: false
+    });
   }
 
-
-  render(){
+  render() {
     return (
-      <div className='todoForm'>
-        <form onSubmit={ this.onSubmit }>
+      <div className="todoForm">
+        <form onSubmit={this.onSubmit}>
           <Input
             autoFocus={this.props.autoFocus}
-            onChange={ this.onChange }
-            type='text'
-            value={(this.state.todo) || (this.props.todo)} >
-          </Input>
-          <Button className="btn-update" disabled={!this.state.todo}  type='submit'>{this.props.buttonName}</Button>
+            onChange={this.onChange}
+            type="text"
+            value={this.state.todo || this.props.todo}
+          />
+          <Button
+            className="btn-update"
+            disabled={!this.state.todo}
+            type="submit">
+            {this.props.buttonName}
+          </Button>
         </form>
       </div>
-    )
+    );
   }
 }
 
-export default TodoForm
+export default TodoForm;
