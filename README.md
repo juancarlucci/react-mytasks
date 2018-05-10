@@ -2,7 +2,7 @@
 
 This is a react.js application that allows the user to create a list of tasks. The list is editable. The app makes API calls to get and store tasks.
 
-![image of app, My Tasks Today](readme-assets/bg-abstract.png "My Tasks Today")
+![image of app, My Tasks Today](readme-assets/react-app-branding.png "My Tasks Today")
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
@@ -77,6 +77,10 @@ routes.js
 ### CRUD for tasks
 
 ```
+TodosContainer.js
+
+...
+
 class TodosContainer extends Component {
   constructor() {
     super();
@@ -131,6 +135,42 @@ class TodosContainer extends Component {
     });
   }
   ```
+  ### Semantic UI to keep things tidy
+
+  ```
+  <List.Item data-todos-index={this.props.todo.id}>
+    <List.Content labelposition="left">
+
+      <Button
+        className="btn btn-icon"
+        circular
+        icon="write"
+        onClick={this.editClickedTodo}
+      />
+
+      <Button
+        className="btn btn-delete"
+        circular
+        onClick={this.deleteClickedTodo}>
+        X
+      </Button>
+
+      <div className="todo-items-list">{this.props.todo.body}</div>
+    </List.Content>
+    {this.props.editingTodoId === this.props.todo._id ? (
+      <TodoForm
+        autoFocus={true}
+        onKeyUp={this.handleEditingDone}
+        onUpdateTodo={this.props.onUpdateTodo}
+        todo={this.props.todo.body}
+        buttonName="Update Todo!"
+      />
+    ) : (
+      ""
+    )}
+  </List.Item>
+  ```
+
 
   ### CSS3 variables for code maintainability
 
@@ -153,38 +193,7 @@ index.css
        --nav-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
   ```
-### Semantic UI to keep things tidy
 
-```
-<List.Item data-todos-index={this.props.todo.id}>
-  <List.Content labelposition="left">
+### Adobe Illustrator for creating background
 
-    <Button
-      className="btn btn-icon"
-      circular
-      icon="write"
-      onClick={this.editClickedTodo}
-    />
-
-    <Button
-      className="btn btn-delete"
-      circular
-      onClick={this.deleteClickedTodo}>
-      X
-    </Button>
-
-    <div className="todo-items-list">{this.props.todo.body}</div>
-  </List.Content>
-  {this.props.editingTodoId === this.props.todo._id ? (
-    <TodoForm
-      autoFocus={true}
-      onKeyUp={this.handleEditingDone}
-      onUpdateTodo={this.props.onUpdateTodo}
-      todo={this.props.todo.body}
-      buttonName="Update Todo!"
-    />
-  ) : (
-    ""
-  )}
-</List.Item>
-```
+![image of app, My Tasks Today](readme-assets/bg-abstract.png "My Tasks Today")
